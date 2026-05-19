@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Write About Today's Lesson</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      background: white;
+      width: 100%;
+      max-width: 600px;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      border: none;
+      background: #4a90e2;
+      color: white;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #357bd8;
+    }
+
+    .posts {
+      margin-top: 30px;
+    }
+
+    .post {
+      background: #eef4ff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .post h3 {
+      margin: 0 0 10px;
+      color: #2b4b7c;
+    }
+
+    .post p {
+      margin: 0;
+      color: #444;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Write About Today's Lesson</h1>
+
+    <input type="text" id="name" placeholder="Your name">
+
+    <textarea id="message" placeholder="Write your reflection, idea or question..."></textarea>
+
+    <button onclick="addPost()">Send</button>
+
+    <div class="posts" id="posts"></div>
+  </div>
+
+  <script>
+    function addPost() {
+      const name = document.getElementById("name").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !message) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const posts = document.getElementById("posts");
+
+      const post = document.createElement("div");
+      post.className = "post";
+
+      post.innerHTML = `
+        <h3>${name}</h3>
+        <p>${message}</p>
+      `;
+
+      posts.prepend(post);
+
+      document.getElementById("name").value = "";
+      document.getElementById("message").value = "";
+    }
+  </script>
+
+</body>
+</html>
